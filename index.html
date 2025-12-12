@@ -1,0 +1,81 @@
+∫<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Memory Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Virtual Memory Simulator</h1>
+        <p class="subtitle">Simulating Paging with LRU and Optimal Page Replacement</p>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <div class="input-group">
+                <label for="frames">Number of Frames:</label>
+                <input type="number" id="frames" min="1" max="10" value="3">
+            </div>
+            
+            <div class="input-group">
+                <label for="pageTrace">Page Reference String (comma-separated):</label>
+                <input type="text" id="pageTrace" value="7,0,1,2,0,3,0,4,2,3,0,3,2" placeholder="e.g., 2,3,1,0,3">
+            </div>
+
+            <div class="input-group">
+                <label for="algorithm">Algorithm:</label>
+                <select id="algorithm">
+                    <option value="lru">LRU (Least Recently Used)</option>
+                    <option value="optimal">Optimal</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button onclick="runStep()">Run Step</button>
+                <button onclick="runFull()">Run Full</button>
+                <button onclick="reset()">Reset</button>
+            </div>
+        </div>
+
+        <!-- Status Section -->
+        <div class="status-section">
+            <p id="status">Ready to simulate. Click "Run Step" or "Run Full".</p>
+            <p id="pageFaultCount">Page Faults: 0</p>
+        </div>
+
+        <!-- Memory Table -->
+        <div class="memory-section">
+            <h3>Physical Memory Frames</h3>
+            <div id="memoryTable"></div>
+        </div>
+
+        <!-- Segmentation Visual (Basic) -->
+        <div class="segment-section">
+            <h3>Simple Segmentation View</h3>
+            <div class="segment-container">
+                <div class="segment">
+                    <strong>Code Segment</strong>
+                    <p>Pages: 0-2</p>
+                </div>
+                <div class="segment">
+                    <strong>Data Segment</strong>
+                    <p>Pages: 3-5</p>
+                </div>
+                <div class="segment">
+                    <strong>Stack Segment</strong>
+                    <p>Pages: 6-9</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Log Section -->
+        <div class="log-section">
+            <h3>Simulation Log</h3>
+            <div id="log"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
